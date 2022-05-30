@@ -1,0 +1,68 @@
+import.java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Collections;
+class Account1 implements Comparable<Account1> {
+    private String name,
+	private int id, 
+	private double pay;
+    public Book(String name, int id, double pay) {
+        this.name = name;
+        this.id = id;
+        this.pay = pay;
+    }
+    public String toString() {
+        return ("(" + name + ", " + id + ", " + pay + ")");
+    }
+	public String getName(){
+		return name;
+	}
+	public int getId(){
+		return id;
+	}
+	public double getPay(){
+		return pay;
+	}
+    @Override
+    public int compareTo(Account1 a) {
+        return toString().compareTo(a.toString());
+    }
+	public int compare(Account1 a1,Account1 a2){
+		if(a1.name==a2.name){
+			return 0;
+		}
+		if(a1.name>a2.name){
+			return 1;
+		}
+		if(a1.name<a2.name){
+			return -1;
+		}
+	}
+}
+public static void main() {
+    Account1[] accounts = {
+            new Account1("Arham", 1,556),
+            new Account1("John", 2, 456)
+    };
+
+    // 1. sort using Comparable
+    Arrays.sort(accounts);
+    System.out.println(Arrays.asList(accounts));
+
+    // 2. sort using comparator: sort by name
+    Arrays.sort(accounts, new Comparator<Account1>() {
+        @Override
+        public int compare(Account1 a1, Account1 a2) {
+		
+            return a1.name.compareTo(a2.name);
+        }
+    });
+	Arrays.sort(accounts, new Comparator<Account1>() {
+        @Override
+        public int compare(Account1 a1, Account1 a2) {
+			
+            return a1.id.compareTo(a2.id);
+        }
+    });
+    System.out.println(Arrays.asList(accounts));
+}
